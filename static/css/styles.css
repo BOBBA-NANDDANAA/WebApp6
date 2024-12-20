@@ -1,0 +1,69 @@
+.flash {
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    text-align: center;
+}
+.flash.success {
+    background-color: #4CAF50;
+    color: white;
+}
+.flash.danger {
+    background-color: #f44336;
+    color: white;
+}
+.flash-info {
+    background-color: #2196F3;
+    color: white;
+}
+/* The Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    background-color: rgba(0, 0, 0, 0.4); /* Black with opacity */
+    padding-top: 60px;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* Close button */
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #ddd;
+}

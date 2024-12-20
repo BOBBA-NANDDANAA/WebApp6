@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logged Out - Exclusive Deals</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f9; }
+        .container { text-align: center; }
+        .message { font-size: 20px; color: #4CAF50; }
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        <h2>You have been logged out</h2>
+        <p class="message">Thank you for visiting. You have successfully logged out.</p>
+        <p><a href="{{ url_for('index') }}">Back to Home</a></p>
+    </div>
+</body>
+</html>

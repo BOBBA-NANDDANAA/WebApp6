@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Exclusive Deals</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f4f4f9;
+    }
+    
+    .container {
+        width: 100%;  /* Make the container responsive */
+        max-width: 400px;  /* Set a max-width for larger screens */
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-sizing: border-box;  /* Ensure padding is included in width */
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    input {
+        width: 100%;  /* Ensure input elements take up full container width */
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;  /* Include padding and border in width calculation */
+    }
+    
+    button {
+        width: 100%; 
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>   
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form method="POST" action="{{ url_for('signup') }}">
+            <input type="text" name="firstname" placeholder="FirstName" required>
+            <input type="text" name="lastname" placeholder="LastName" required>
+            <input type="text" name="username" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p style="text-align: center;">Already have an account? <a href="{{ url_for('login') }}">Log In</a></p>
+    </div>
+</body>
+</html>

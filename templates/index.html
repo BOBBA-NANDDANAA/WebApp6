@@ -301,7 +301,7 @@
                         <p><strong>Expires On:</strong> {{ deal['Expire Date'] }}</p>
 
                         <div class="share-box">
-                            <button class="share-button" onclick="openShareModal()">Share</button>
+                            <button class="share-button" data-company="{{ deal.Company }}" onclick="openShareModal(this)">Share</button>
                         </div>
                     </div>
                 {% endfor %}

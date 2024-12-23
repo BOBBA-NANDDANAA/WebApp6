@@ -1,5 +1,7 @@
-function openShareModal() {
+function openShareModal(buttonElement) {
     const modal = document.getElementById("shareModal");
+    const companyName = buttonElement.getAttribute("data-company");
+    modal.setAttribute("data-company", companyName);
     modal.style.display = "flex";
 }
 
@@ -9,13 +11,9 @@ function closeShareModal() {
 }
 
 function getDealUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const company = urlParams.get('company') || 'default'; // Use 'default' if no company is provided.
-
-    // Get the current domain (works for both local and production)
+    const modal = document.getElementById("shareModal");
+    const company = modal.getAttribute("data-company") || "default";
     const baseUrl = window.location.origin;
-
-    // Always append the 'company' parameter to the base URL
     return `${baseUrl}/?company=${encodeURIComponent(company)}`;
 }
 
@@ -48,20 +46,13 @@ function shareViaEmail() {
 function shareOnWhatsApp() {
     const url = getDealUrl();
     const message = `Check out this amazing deal: ${url}`;
-
-    // WhatsApp deep linking for mobile
     const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(message)}`;
-
-    // Fallback URL for when WhatsApp is not installed (opens WhatsApp Web)
     const webUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
-    // Try to open WhatsApp directly (mobile deep linking)
     const openUrl = () => window.location.href = whatsappUrl;
-
-    // If WhatsApp is not available, fallback to WhatsApp Web after a delay
     const timeout = setTimeout(() => {
-        window.location.href = webUrl;  // Open WhatsApp Web if the app is not installed
-    }, 1000);  // 1 second delay before fallback
+        window.location.href = webUrl;
+    }, 1000);
 
-    openUrl();  // Attempt to open WhatsApp directly
+    openUrl();
 }

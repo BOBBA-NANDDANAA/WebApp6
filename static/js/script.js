@@ -20,7 +20,13 @@ function getDealUrl() {
 function shareOnFacebook() {
     const url = getDealUrl();
     const shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-    window.open(shareUrl, "Share on Facebook", "width=600,height=400,scrollbars=yes");
+    // Open the Facebook sharer in a new window
+    const facebookWindow = window.open(shareUrl, "Share on Facebook", "width=600,height=400,scrollbars=yes");
+
+    // Check if the window is blocked
+    if (!facebookWindow || facebookWindow.closed || typeof facebookWindow.closed === 'undefined') {
+        alert("Please enable pop-ups for sharing on Facebook.");
+    }
 }
 
 function shareOnTwitter() {
@@ -49,10 +55,11 @@ function shareOnWhatsApp() {
     const whatsappUrl = `whatsapp://send?text=${encodeURIComponent(message)}`;
     const webUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
 
-    const openUrl = () => window.location.href = whatsappUrl;
-    const timeout = setTimeout(() => {
+    // Try opening the WhatsApp app
+    window.location.href = whatsappUrl;
+
+    // Fallback to WhatsApp Web after 1 second
+    setTimeout(() => {
         window.location.href = webUrl;
     }, 1000);
-
-    openUrl();
 }

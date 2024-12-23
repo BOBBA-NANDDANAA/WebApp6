@@ -7,271 +7,249 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <style>
         /* General Styles */
-    
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f4f4f9;
-    }
-
-    /* Navbar Styles */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #000;
-        color: white;
-        padding: 10px 20px;
-    }
-
-    .logo-link {
-        color: #ff8800; /* Orange color */
-        font-size: 1.5em; /* Optional: adjust font size */
-        font-weight: bold; /* Optional: make text bold */
-        text-decoration: none; /* Remove underline */
-    }
-
-    .logo-link:hover {
-        color: #e67e00; /* Darker orange on hover */
-    }
-
-    .logo-link:visited {
-        color: #ff8800; /* Ensure the color stays orange even after visiting */
-    }
-    
-    .logo-link:focus {
-        outline: none; /* Remove focus outline (optional, if you want) */
-    }
-
-    .navbar .search-bar {
-        display: flex;
-        align-items: center;
-    }
-
-    .navbar .search-bar input[type="text"] {
-        padding: 8px;
-        border: none;
-        border-radius: 4px 0 0 4px;
-        outline: none;
-        width: 200px;
-    }
-
-    .navbar .search-bar button {
-        padding: 8px 15px;
-        background-color: #ff8800;
-        border: none;
-        border-radius: 0 4px 4px 0;
-        color: white;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .navbar .search-bar button:hover {
-        background-color: #e67e00;
-    }
-
-    .auth-buttons {
-        display: flex;
-        align-items: center;
-    }
-
-    .auth-buttons a {
-        margin-left: 10px;
-        padding: 8px 15px;
-        background: #4CAF50;
-        color: white;
-        border-radius: 5px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-
-    .auth-buttons a:hover {
-        background: #43a047;
-    }
-
-    /* Main Container */
-    .container {
-        width: 90%;
-        max-width: 1200px;
-        margin: 20px auto;
-    }
-
-    h1 {
-        text-align: center;
-        color: #333;
-    }
-
-    /* Deal Cards */
-    .deals {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 20px;
-    }
-
-    .card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start; /* Ensures content aligns at the top */
-    align-items: center; 
-    min-height: 250px; /* Ensures consistent height for varying content sizes */
-    transition: 0.3s ease;
-}
-
-
-    .card:hover {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        transform: translateY(-5px);
-    }
-
-    .card img {
-    width: 100px;   /* Set fixed width */
-    height: 100px;  /* Set fixed height */
-    object-fit: contain;  /* Ensures the image maintains aspect ratio without distortion */
-    margin-bottom: 10px;
-}
-
-    .card h3 {
-        margin: 10px 0;
-        color: #333;
-        word-break: break-word;
-    }
-
-    .card p {
-        margin: 5px 0;
-        color: #555;
-    }
-
-    /* Responsive Adjustments */
-    @media (max-width: 768px) {
-        .deals {
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f4f4f9;
         }
 
-        .navbar .search-bar input[type="text"] {
-            width: 150px;
-        }
-    }
-
-    @media (max-width: 480px) {
+        /* Navbar Styles */
         .navbar {
-            flex-direction: column;
-            align-items: flex-start;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #000;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .logo-link {
+            color: #ff8800;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .logo-link:hover {
+            color: #e67e00;
         }
 
         .navbar .search-bar {
-            margin-top: 10px;
+            display: flex;
+            flex: 1;
+            max-width: 400px;
+            margin: 10px 0;
+        }
+
+        .navbar .search-bar input[type="text"] {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            outline: none;
+        }
+
+        .navbar .search-bar button {
+            padding: 8px 15px;
+            background-color: #ff8800;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: white;
+            cursor: pointer;
+        }
+
+        .navbar .search-bar button:hover {
+            background-color: #e67e00;
         }
 
         .auth-buttons {
-            flex-direction: column;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .auth-buttons a {
-            margin: 5px 0;
+            padding: 8px 15px;
+            background: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
         }
+
+        .auth-buttons a:hover {
+            background: #43a047;
+        }
+
+        /* Main Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Deal Cards */
+        .deals {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            flex: 1;
+        }
+
+        .card-content a {
+            color: #ff8800;
+            font-weight: bold;
+            font-size: 1.1em;
+            text-decoration: none;
+        }
+
+        .card-content a:hover {
+            color: #e67e00;
+        }
+
+        .card-content p {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0;
+        }
+
+        .share-box {
+            margin-left: auto;
+        }
+
+        .share-button {
+            padding: 8px 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .share-button:hover {
+            background-color: #45a049;
+        }
+        
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.6); /* Transparent black overlay */
+        z-index: 1000;
     }
 
-    .share-box {
-    background-color: #f1f1f1;
-    padding: 10px;
-    margin-top: 20px;
-    border-radius: 5px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    .modal-content {
+        background: white;
+        padding: 20px 30px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: auto; /* Center it horizontally and vertically */
+        position: relative;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    }
 
-.share-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-}
+    /* Close Button */
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
 
-.share-button:hover {
-    background-color: #45a049;
-}
+    /* Share Buttons */
+    .share-options {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        flex-wrap: wrap; /* Allows wrapping on smaller screens */
+        margin-top: 20px;
+    }
 
+    .share-options button {
+        flex: 1;
+        padding: 10px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 0.9em;
+        text-align: center;
+    }
 
-    /* Modal Styles */
-    /* Modal Styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-}
+    .share-options button:hover {
+        background-color: #45a049;
+    }
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
 
-.modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
-    position: relative;
-}
+            .navbar .search-bar {
+                width: 100%;
+            }
 
-.modal-content h2 {
-    margin-bottom: 15px;
-}
+            .share-options {
+            flex-direction: column; /* Stacks buttons on smaller screens */
+            gap: 15px;
+            }
 
-.modal-content button {
-    margin: 10px 5px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        .modal-content {
+            width: 90%; /* Adjust for small screens */
+        }
 
-.modal-content button:hover {
-    background-color: #ddd;
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close-btn:hover {
-    color: red;
-}
-
-</style>
-
-    
+            .auth-buttons {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
     <div class="navbar">
-        <div class="logo">
-            <a href="{{ url_for('index') }}" class="logo-link">Exclusive Deals</a>
-        </div>
+        <a href="{{ url_for('index') }}" class="logo-link">Exclusive Deals</a>
         <form class="search-bar" method="GET" action="/">
-            <input type="text" name="company" placeholder="Search deals, coupons, stores..." value="{{ search_company }}">
+            <input type="text" name="company" placeholder="Search deals..." value="{{ search_company }}">
             <button type="submit">Search</button>
         </form>
         <div class="auth-buttons">
@@ -287,19 +265,18 @@
     <!-- Main Content -->
     <div class="container">
         <h1>Latest Deals</h1>
-        <div class="deals">        
+        <div class="deals">
             {% if no_results %}
-                <p style="text-align: center;">No results found.</p>
-            {% else %}   
+                <p>No results found.</p>
+            {% else %}
                 {% for deal in deals %}
                     <div class="card">
                         <img src="{{ deal.Logo }}" alt="{{ deal.Company }} Logo" onerror="this.onerror=null;this.src='/static/logos/default_logo.png';">
-                        <a href="https://www.{{ deal.CleanName }}.com">
-                            <h3>{{ deal.Company }}</h3>
-                        </a>
-                        <p><strong>Offer:</strong> {{ deal.Offer }}% Off</p>
-                        <p><strong>Expires On:</strong> {{ deal['Expire Date'] }}</p>
-
+                        <div class="card-content">
+                            <a href="https://www.{{ deal.CleanName }}.com">{{ deal.Company }}</a>
+                            <p><strong>Offer:</strong> {{ deal.Offer }}% Off</p>
+                            <p><strong>Expires On:</strong> {{ deal['Expire Date'] }}</p>
+                        </div>
                         <div class="share-box">
                             <button class="share-button" data-company="{{ deal.Company }}" onclick="openShareModal(this)">Share</button>
                         </div>
@@ -308,19 +285,6 @@
             {% endif %}
         </div>
     </div>
-
-    <!-- Flash Messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-            <div class="flash-messages">
-                {% for category, message in messages %}
-                    <div class="flash {{ category }}">
-                        <p>{{ message }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
 
     <!-- Modal for Sharing -->
     <div id="shareModal" class="modal">
@@ -331,14 +295,10 @@
             <button onclick="shareOnTwitter()">Share on Twitter</button>
             <button onclick="shareOnLinkedIn()">Share on LinkedIn</button>
             <button onclick="shareViaEmail()">Share via Email</button>
-            <button onclick="shareOnWhatsApp()">Share on Whatsapp</button>
+            <button onclick="shareOnWhatsApp()">Share on WhatsApp</button>
         </div>
     </div>
 
-    <!-- Link External Script -->
     <script src="static/js/script.js"></script>
-
-
 </body>
 </html>
-

@@ -27,7 +27,7 @@ app.config['MAIL_DEFAULT_SENDER'] = 'nandanaboba@gmail.com'  # Default sender em
 mail = Mail(app)
 
 # Constants
-EXCEL_FILE = "D:/WebApp6-1/EXCEL1.xlsx"  # Your PDF file path
+EXCEL_FILE = "EXCEL1.xlsx"  # Your PDF file path
 # Define file paths
 CSV_DIR = "D:/WebApp6-1/output_csv/"  # Directory to save the daily CSV files  # Output CSV file to store deals
 os.makedirs(CSV_DIR, exist_ok=True)

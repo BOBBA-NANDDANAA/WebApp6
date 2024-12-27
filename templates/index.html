@@ -273,8 +273,9 @@
                     <div class="card">
                         <img src="{{ deal.Logo }}" alt="{{ deal.Company }} Logo" onerror="this.onerror=null;this.src='/static/logos/default_logo.png';">
                         <div class="card-content">
+                            <a href="{{ deal.Bank_Website }}">{{ deal.Bank }}</a>
                             <a href="https://www.{{ deal.CleanName }}.com">{{ deal.Company }}</a>
-                            <p><strong>Offer:</strong> {{ deal.Offer }}% Off</p>
+                            <p><strong>Offer:</strong> {{ deal.Offer }} </p>
                             <p><strong>Expires On:</strong> {{ deal['Expire Date'] }}</p>
                         </div>
                         <div class="share-box">

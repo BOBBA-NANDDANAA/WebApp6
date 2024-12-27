@@ -27,9 +27,9 @@ app.config['MAIL_DEFAULT_SENDER'] = 'nandanaboba@gmail.com'  # Default sender em
 mail = Mail(app)
 
 # Constants
-EXCEL_FILE = "D:/imagereader/EXCEL1.xlsx"  # Your PDF file path
+EXCEL_FILE = "D:/WebApp6-1/EXCEL1.xlsx"  # Your PDF file path
 # Define file paths
-CSV_DIR = "D:/output_csv/"  # Directory to save the daily CSV files  # Output CSV file to store deals
+CSV_DIR = "D:/WebApp6-1/output_csv/"  # Directory to save the daily CSV files  # Output CSV file to store deals
 os.makedirs(CSV_DIR, exist_ok=True)
 USER_CSV_FILE = "users.csv"  # CSV file to store user credentials
 LOGO_DIR = os.path.join(app.root_path, 'static/logos')
@@ -54,14 +54,6 @@ def fetch_logo(company_name):
     except Exception as e:
         print(f"Failed to fetch logo for {company_name}: {e}")
     return "/static/logos/default_logo.png"
-
-
-import os
-from datetime import datetime, timedelta
-import pandas as pd
-
-# Define file paths
-
 
 # Mapping shorthand names to full bank names
 BANK_MAPPING = {

@@ -88,3 +88,84 @@ function shareOnWhatsApp() {
         window.location.href = webUrl;
     }
 }
+
+// Toggle Menu Visibility
+function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+}
+
+// Toggle Filters Visibility
+function toggleFilters() {
+    const filters = document.getElementById('filters');
+    filters.style.display = filters.style.display === 'block' ? 'none' : 'block';
+}
+
+// Apply Filters (collect selected banks)
+function applyFilters() {
+    const selectedBanks = Array.from(document.querySelectorAll('input[name="banks"]:checked'))
+        .map(checkbox => checkbox.value);
+
+    // TODO: Use `selectedBanks` to filter the deals
+    console.log('applyFilters executed');
+    console.log('Selected Banks:', selectedBanks);
+    fetchFilteredDeals(selectedBanks);
+}
+
+// Fetch Filtered Deals from Server
+function fetchFilteredDeals(selectedBanks) {
+    // Make an AJAX call to fetch filtered deals from the server
+    console.log('Fetching deals for:', selectedBanks);
+
+    // Example: Fetch deals (replace `/filter-deals` with your endpoint)
+    fetch('/filter-deals', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ banks: selectedBanks })
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Filtered Deals Received:', data);
+            // Update the deals list dynamically (e.g., by manipulating the DOM)
+            // Example: updateDealsList(data);
+            updateDealsUI(data);
+        })
+        .catch(err => console.error('Error fetching deals:',err));
+}
+
+function updateDealsUI(deals) {
+    try {
+        const dealsContainer = document.querySelector('.deals');
+        dealsContainer.innerHTML = ''; // Clear the existing deals
+
+        if (deals.length === 0) {
+            dealsContainer.innerHTML = '<p>No deals found for selected filters.</p>';
+            return;
+        }
+
+        deals.forEach(deal => {
+            const dealCard = document.createElement('div');
+            dealCard.classList.add('card');
+            dealCard.innerHTML = `
+                <img src="${deal.Logo}" alt="${deal.Company} Logo">
+                <div class="card-content">
+                    <a href="${deal.Bank_Website}" target="_blank">${deal.Bank}</a>
+                    <a href="https://www.${deal.CleanName}.com" target="_blank">${deal.Company}</a>
+                    <p><strong>Offer:</strong> ${deal.Offer}</p>
+                    <p><strong>Expires On:</strong> ${deal['Expire Date']}</p>
+                </div>
+                <div class="share-box">
+                    <button class="share-button" data-company="${deal.Company}" onclick="openShareModal(this)">Share</button>
+                </div>
+            `;
+            dealsContainer.appendChild(dealCard);
+        });
+    } catch (error) {
+        console.error('Error updating deals UI:', error);
+    }
+}

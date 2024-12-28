@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background: #f4f4f9;
+    }
+    
+    .container {
+        width: 100%;  /* Make the container responsive */
+        max-width: 400px;  /* Set a max-width for larger screens */
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        box-sizing: border-box;  /* Ensure padding is included in width */
+    }
+    
+    h2 {
+        text-align: center;
+    }
+    
+    input {
+        width: 100%;  /* Ensure input elements take up full container width */
+        padding: 10px;
+        margin: 10px 0;
+        box-sizing: border-box;  /* Include padding and border in width calculation */
+    }
+    
+    button {
+        width: 100%; 
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .alert {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+.flash-messages {
+    margin-bottom: 20px;
+}
+
+.alert.success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert.info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+</style>   
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <div class="container">
+        <h2>Add Your Post</h2>
+        <form method="POST" action="{{ url_for('form') }}">
+            <label for="bank">Bank Name:</label>
+            <input type="text" id="bank" name="bank" required>
+
+            <label for="company">Company Name:</label>
+            <input type="text" id="company" name="company" required>
+
+            <label for="offer">Offer Details:</label>
+            <textarea id="offer" name="offer" rows="4" cols="50" required></textarea>
+
+            <label for="expire_date">Expiration Date:</label>
+            <input type="date" id="expire_date" name="expire_date" required>
+
+            <button type="submit">Submit Post</button>
+            
+        </form>
+       
+    </div>
+</body>
+</html>

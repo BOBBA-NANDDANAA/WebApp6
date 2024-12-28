@@ -4,245 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exclusive Deals</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <style>
-        /* General Styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f4f4f9;
-        }
-
-        /* Navbar Styles */
-        .navbar {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #000;
-            color: white;
-            padding: 10px 20px;
-        }
-
-        .logo-link {
-            color: #ff8800;
-            font-size: 1.5em;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .logo-link:hover {
-            color: #e67e00;
-        }
-
-        .navbar .search-bar {
-            display: flex;
-            flex: 1;
-            max-width: 400px;
-            margin: 10px 0;
-        }
-
-        .navbar .search-bar input[type="text"] {
-            flex: 1;
-            padding: 8px;
-            border: none;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-        }
-
-        .navbar .search-bar button {
-            padding: 8px 15px;
-            background-color: #ff8800;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            color: white;
-            cursor: pointer;
-        }
-
-        .navbar .search-bar button:hover {
-            background-color: #e67e00;
-        }
-
-        .auth-buttons {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .auth-buttons a {
-            padding: 8px 15px;
-            background: #4CAF50;
-            color: white;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-
-        .auth-buttons a:hover {
-            background: #43a047;
-        }
-
-        /* Main Container */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-
-        /* Deal Cards */
-        .deals {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            padding: 10px;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .card img {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-        }
-
-        .card-content {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            flex: 1;
-        }
-
-        .card-content a {
-            color: #ff8800;
-            font-weight: bold;
-            font-size: 1.1em;
-            text-decoration: none;
-        }
-
-        .card-content a:hover {
-            color: #e67e00;
-        }
-
-        .card-content p {
-            font-size: 0.9em;
-            color: #666;
-            margin: 0;
-        }
-
-        .share-box {
-            margin-left: auto;
-        }
-
-        .share-button {
-            padding: 8px 12px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-        }
-
-        .share-button:hover {
-            background-color: #45a049;
-        }
-        
-        .modal {
-        display: none; /* Hidden by default */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6); /* Transparent black overlay */
-        z-index: 1000;
-    }
-
-    .modal-content {
-        background: white;
-        padding: 20px 30px;
-        border-radius: 8px;
-        max-width: 500px;
-        margin: auto; /* Center it horizontally and vertically */
-        position: relative;
-        text-align: center;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Close Button */
-    .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-        font-size: 1.5em;
-        cursor: pointer;
-    }
-
-    /* Share Buttons */
-    .share-options {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
-        flex-wrap: wrap; /* Allows wrapping on smaller screens */
-        margin-top: 20px;
-    }
-
-    .share-options button {
-        flex: 1;
-        padding: 10px;
-        border: none;
-        background-color: #4CAF50;
-        color: white;
-        border-radius: 5px;
-        cursor: pointer;
-        font-size: 0.9em;
-        text-align: center;
-    }
-
-    .share-options button:hover {
-        background-color: #45a049;
-    }
-        /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .navbar .search-bar {
-                width: 100%;
-            }
-
-            .share-options {
-            flex-direction: column; /* Stacks buttons on smaller screens */
-            gap: 15px;
-            }
-
-        .modal-content {
-            width: 90%; /* Adjust for small screens */
-        }
-
-            .auth-buttons {
-                flex-wrap: wrap;
-                gap: 5px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">  
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -252,15 +14,47 @@
             <input type="text" name="company" placeholder="Search deals..." value="{{ search_company }}">
             <button type="submit">Search</button>
         </form>
-        <div class="auth-buttons">
-            {% if session.username %}
-                <a href="{{ url_for('logout') }}">Log Out</a>
-            {% else %}
-                <a href="{{ url_for('login') }}">Sign In</a>
-                <a href="{{ url_for('signup') }}">Sign Up</a>
-            {% endif %}
+        <!-- Menu icon/button -->
+        <div class="menu-icon" onclick="toggleMenu()">&#9776; Menu</div>
+        <div id="menu" class="menu-drawer">
+            <div class="menu-header">
+                <h2>Menu</h2>
+                <button onclick="toggleMenu()">X</button>
+            </div>
+            <ul>
+                {% if session.username %}
+                    <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                    <li><a href="{{ url_for('form') }}">Add Post</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Sign In</a></li>
+                    <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                    <li><a href="{{ url_for('form') }}">Add Post</a></li>
+                {% endif %}
+                <li><a href="#" onclick="toggleFilters()">Filters</a></li>
+
+                <div id="filters" style="display:none;">
+                    <div class="filter-item">
+                        <input type="checkbox" name="banks" value="American Express" id="amex">
+                        <label for="amex">American Express</label>
+                    </div>
+                
+                    <div class="filter-item">
+                        <input type="checkbox" name="banks" value="Bank Of America" id="bankOfAmerica">
+                        <label for="bankOfAmerica">Bank Of America</label>
+                    </div>
+                
+                    <div class="filter-item">
+                        <input type="checkbox" name="banks" value="Wells Fargo" id="wellsFargo">
+                        <label for="wellsFargo">Wells Fargo</label>
+                    </div>                
+    
+                    <button id="filter-button" onclick="applyFilters()">Apply Filters</button>
+                </div>
+
+            </ul>
         </div>
     </div>
+
 
     <!-- Main Content -->
     <div class="container">
